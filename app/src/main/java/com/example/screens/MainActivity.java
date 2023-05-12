@@ -33,12 +33,17 @@ public class MainActivity extends AppCompatActivity {
     public void onButtonClick(View view) {
         Intent switchIntent = new Intent(this, VideoActivity.class);
         String url = urlField.getText().toString();
+
         if(url.isEmpty()) {
             switchIntent.putExtra("url", defaultUrl);
         }else {
+            if( ! ( url.startsWith("http://") ) || url.startsWith(("https://") )) {
+                url = "https://" + url;
+            }
             switchIntent.putExtra("url", url);
         }
 
         startActivity(switchIntent);
+        urlField.setText("", TextView.BufferType.EDITABLE);
     }
 }
