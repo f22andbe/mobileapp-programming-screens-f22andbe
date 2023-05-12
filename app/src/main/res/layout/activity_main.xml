@@ -16,6 +16,8 @@
         android:text="@string/url_field_explanation"
         android:textSize="20sp"
         android:gravity="center_horizontal"
+        android:layout_marginLeft="25sp"
+        android:layout_marginRight="25sp"
         android:layout_marginBottom="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -28,6 +30,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:hint="@string/edit_hint"
+        android:imeOptions="actionDone"
+        android:inputType="text"
         android:onClick="onUrlFieldClick"/>
 
     <Button
