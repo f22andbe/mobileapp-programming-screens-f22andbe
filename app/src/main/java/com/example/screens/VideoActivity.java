@@ -26,18 +26,14 @@ public class VideoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle SavedInstanceState) {
         super.onCreate(SavedInstanceState);
-        setContentView(R.layout.activity_video);
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
+            setContentView(R.layout.activity_video);
 
         intent = getIntent();
         webview = findViewById(R.id.youtube);
         webview.setWebViewClient(new WebViewClient());
         webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        webSettings.setLoadWithOverviewMode(true);
-        webSettings.setDomStorageEnabled(true);
+
 
         String url = intent.getStringExtra("url"); // your URL here
         Log.i("VideoActivity", "url from intent is " + url);
