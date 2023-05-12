@@ -26,9 +26,7 @@ public class MainActivity extends AppCompatActivity {
         switchActivity = findViewById(R.id.switch_activity);
     }
 
-    public void onUrlFieldClick(View view) {
 
-    }
 
     public void onButtonClick(View view) {
         Intent switchIntent = new Intent(this, VideoActivity.class);
