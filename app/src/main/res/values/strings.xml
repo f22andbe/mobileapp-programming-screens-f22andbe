@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Screens</string>
+    <string name="url_field_explanation">If you want to open another video than the default then enter url below, otherwise just click switch activity</string>
+    <string name="edit_hint">Enter url here</string>
+    <string name="switchButton">Switch activity</string>
+
+    <string name="video_activity_message">This is the video activity</string>
 </resources>
