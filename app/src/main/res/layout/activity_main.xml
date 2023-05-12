@@ -31,8 +31,7 @@
         android:layout_margin="15dp"
         android:hint="@string/edit_hint"
         android:imeOptions="actionDone"
-        android:inputType="text"
-        android:onClick="onUrlFieldClick"/>
+        android:inputType="text" />
 
     <Button
         android:id="@+id/switch_activity"
