@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         Intent switchIntent = new Intent(this, VideoActivity.class);
         String url = urlField.getText().toString();
 
+        /* if nothing has been entered by user we send a default url with the intent
+         * otherwise we extract the entered string and send that
+         */
         if(url.isEmpty()) {
             switchIntent.putExtra("url", defaultUrl);
         }else {
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         startActivity(switchIntent);
-        urlField.setText("", TextView.BufferType.EDITABLE);
+        urlField.setText("", TextView.BufferType.EDITABLE); // set content of field to empty string
+                                                                // in case the user returns to this activity
     }
 }

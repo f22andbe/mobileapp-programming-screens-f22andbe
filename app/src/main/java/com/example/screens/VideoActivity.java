@@ -35,12 +35,15 @@ public class VideoActivity extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
 
 
-        String url = intent.getStringExtra("url"); // your URL here
+        String url = intent.getStringExtra("url"); // URL is extracted from intent here
         Log.i("VideoActivity", "url from intent is " + url);
         webview.loadUrl(url);
     }
 
 
+    /* This event handler allows the user to go back to the previous activity by
+     * clicking the system back button and also navigate among sites
+     */
     @Override
     public void onBackPressed() {
         if(webview.canGoBack())
