@@ -28,14 +28,19 @@ public class VideoActivity extends AppCompatActivity {
         super.onCreate(SavedInstanceState);
             setContentView(R.layout.activity_video);
 
+        /* Create string to display above WebView */
         intent = getIntent();
+        String url = intent.getStringExtra("url"); // URL is extracted from intent here
+        TextView urlText = findViewById(R.id.url_invid);
+        urlText.setText("Url sent from MainActivity:\n" + url);
+
         webview = findViewById(R.id.youtube);
         webview.setWebViewClient(new WebViewClient());
         webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
 
-        String url = intent.getStringExtra("url"); // URL is extracted from intent here
+
         Log.i("VideoActivity", "url from intent is " + url);
         webview.loadUrl(url);
     }

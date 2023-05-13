@@ -4,7 +4,7 @@
 **Skriv din rapport här!**
 
 
-För att lösa denna uppgift har ett program skrivits som tar en url som input ifrån användaren, startar en ny aktivitet, skickar med nämnda url till den nya aktivteten och laddar denna i en WebView. Programmet har två aktiviteter, MainActivity och VideoActivity(namnet pga att en video visas om ingen url fylls i). 
+För att lösa denna uppgift har ett program skrivits som tar en url som input ifrån användaren, startar en ny aktivitet, skickar med nämnda url till den nya aktivteten och visar denna i en TextView samt laddar den i en WebView precis nedanför. Programmets två aktiviteter heter MainActivity och VideoActivity(namnet pga att en video visas om ingen url fylls i). 
 
 ------------------------
 ![](first_activity.png) | ![](second_activity_with_default_url.png)
@@ -55,22 +55,29 @@ protected void onCreate(Bundle SavedInstanceState) {
      setContentView(R.layout.activity_video);
 ```
             
-I VideoActivity.java så laddas en WebView med hjälp av findViewById() och kopplas till en  WebVeiwClient för att den laddade url:en skall visas i appen och inte en extern webbläsare.  
+I VideoActivity.java så laddas en TextView för att visa den url som skickats med till VideoActivity. För att visa den url som skickats så ska den först extraheras ur den intent som användes för att starta aktiviteten. Intents skickar data i form av nyckel/värde par, därmed kan den url som skickat extraheras genom ett anrop till getIntent() och därefter intent.getStringExtra("url"), där strängen ""url" är en nyckel till url:en 
+
+Då detta gjorts så laddas en WebView för att visa sidan som finns på addressen. Denna laddas med hjälp av findViewById() och kopplas sedan till en  WebVeiwClient för att den laddade url:en skall visas i appen och inte en extern webbläsare.  
 
 ```
-@Override
+ @Override
     protected void onCreate(Bundle SavedInstanceState) {
         super.onCreate(SavedInstanceState);
-        setContentView(R.layout.activity_video);
-       
+            setContentView(R.layout.activity_video);
+
+        /* Create string to display above WebView */
         intent = getIntent();
+        String url = intent.getStringExtra("url"); // URL is extracted from intent here
+        TextView urlText = findViewById(R.id.url_invid);
+        urlText.setText("Url sent from MainActivity: " + url);
+
         webview = findViewById(R.id.youtube);
         webview.setWebViewClient(new WebViewClient());
         webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        
 
-        String url = intent.getStringExtra("url"); // URL is extracted from intent here
+
+
         Log.i("VideoActivity", "url from intent is " + url);
         webview.loadUrl(url);
     }
